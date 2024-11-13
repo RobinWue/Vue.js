@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task - Content directives</title>
+    <title>Task - List Rendering</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -21,14 +21,27 @@
     </header>
     <main>
         <div id="app" class="inside">
-            <h2 v-once="'Directives for Vue ' + (vueVersion)">
-                Directives for Vue {{ vueVersion }}
-            </h2>
-            <div class="intro" v-html="text"></div>
-            <p>
-                Sometimes v-text is better than {{ 'Some text' }} or
-                {{myDataProperty}}
-            </p>
+            <button @click="toggleDarkMode" class="dark-mode-toggle">
+                {{ isDarkMode ? "Light Mode" : "Dark Mode" }}
+            </button>
+            <h1>My Books</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th v-for="(key, index) in Object.keys(books[0])" :key="index">{{ key }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(book, index) in books" :key="index">
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.isbn }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.publisher }}</td>
+                        <td>{{ book.price }}</td>
+                        <td>{{ book.numPages }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </main>
     <script src="https://unpkg.com/vue@latest"></script>
