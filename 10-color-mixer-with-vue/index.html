@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Mixer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app">
+        <header id="color-header">
+            <div>
+                <label for="red">Red: </label>
+                <input type="range" id="red" v-model="red" min="0" max="255">
+                <span>{{ red }}</span>
+            </div>
+            <div>
+                <label for="green">Green: </label>
+                <input type="range" id="green" v-model="green" min="0" max="255">
+                <span>{{ green }}</span>
+            </div>
+            <div>
+                <label for="blue">Blue: </label>
+                <input type="range" id="blue" v-model="blue" min="0" max="255">
+                <span>{{ blue }}</span>
+            </div>
+            <div id="color-values">
+                <span>{{ rgb }}</span>
+                <span>{{ hex }}</span>
+            </div>
+        </header>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

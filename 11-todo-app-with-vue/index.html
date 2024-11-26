@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Todo App</title>
+    <link rel="stylesheet" href="https://unpkg.com/normalize.css/normalize.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="app">
+        <header class="header">
+            <h1 class="header__title">Vue Todo App</h1>
+        </header>
+        <main class="main">
+            <section class="todo-input">
+                <input v-model="newTodo" class="todo-input__input" type="text" placeholder="Get sh*t done!"
+                    @keypress.enter="addTodo" />
+                <button class="todo-input__button button" @click="addTodo">
+                    Add
+                </button>
+            </section>
+
+            <section class="filter-and-options">
+                <h2>Filter & Options</h2>
+                <div class="radio-container">
+                    <input type="radio" id="radio-all" value="all" v-model="filter" class="radio-button" />
+                    <label for="radio-all">All</label>
+                    <input type="radio" id="radio-open" value="open" v-model="filter" class="radio-button" />
+                    <label for="radio-open">Open</label>
+                    <input type="radio" id="radio-done" value="done" v-model="filter" class="radio-button" />
+                    <label for="radio-done">Done</label>
+                </div>
+                <button class="button" @click="removeDoneTodos">
+                    Remove Done Todos
+                </button>
+            </section>
+
+            <section class="todos">
+                <h2>Your Todos</h2>
+                <ul class="todo-list">
+                    <li v-for="todo in filteredTodos" :key="todo.id" class="todo-item" :class="{ done: todo.done }">
+                        <input type="checkbox" class="todo-item__checkbox" v-model="todo.done" />
+                        <label class="todo-item__text">{{ todo.text }}</label>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
