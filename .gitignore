@@ -1,0 +1,19 @@
+# Ignoriere Caches und Logs
+*.log
+UsersrobywAppDataLocalnpm-cache/
+*_cache/
+_logs/
+
+# Ignoriere node_modules und Build-Ordner
+node_modules/
+dist/
+coverage/
+*.local
+
+# Ignoriere Editor- und Systemdateien
+.vscode/
+.idea/
+.DS_Store
+
+# Ignoriere TypeScript-Build-Infos
+*.tsbuildinfo
