@@ -14,6 +14,8 @@
           :key="book.id"
           :title="book.title"
           :author="book.author"
+          :isBookmarked="book.isBookmarked"
+          @toggle-bookmark="toggleBookmark(book.id)"
         />
       </tbody>
     </table>
@@ -21,23 +23,32 @@
 </template>
 
 <script>
-import BookListRow from './BookListRow/BookListRow.vue';
+import BookListRow from './BookListRow/BookListRow.vue'
 
 export default {
   name: 'BookList',
   data() {
     return {
       books: [
-        { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald' },
-        { id: 2, title: '1984', author: 'George Orwell' },
-        { id: 3, title: 'To Kill a Mockingbird', author: 'Harper Lee' },
+        { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', isBookmarked: false },
+        { id: 2, title: '1984', author: 'George Orwell', isBookmarked: false },
+        { id: 3, title: 'To Kill a Mockingbird', author: 'Harper Lee', isBookmarked: false },
       ],
-    };
+    }
+  },
+  methods: {
+    toggleBookmark(bookId) {
+      // Zustand des Buchs ändern
+      const book = this.books.find((b) => b.id === bookId)
+      if (book) {
+        book.isBookmarked = !book.isBookmarked
+      }
+    },
   },
   components: {
     BookListRow,
   },
-};
+}
 </script>
 
 <style scoped>

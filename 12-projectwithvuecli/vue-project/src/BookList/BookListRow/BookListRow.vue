@@ -3,13 +3,16 @@
     <td>{{ title }}</td>
     <td>{{ author }}</td>
     <td>
-      <BaseButton text="Action" />
+      <BaseButton
+        :text="isBookmarked ? 'Remove Bookmark' : 'Add Bookmark'"
+        @click="toggleBookmark"
+      />
     </td>
   </tr>
 </template>
 
 <script>
-import BaseButton from '../../BaseButton/BaseButton.vue';
+import BaseButton from '../../BaseButton/BaseButton.vue'
 
 export default {
   name: 'BookListRow',
@@ -22,11 +25,20 @@ export default {
       type: String,
       required: true,
     },
+    isBookmarked: {
+      type: Boolean,
+      required: true,
+    },
   },
   components: {
     BaseButton,
   },
-};
+  methods: {
+    toggleBookmark() {
+      this.$emit('toggle-bookmark')
+    },
+  },
+}
 </script>
 
 <style scoped>
