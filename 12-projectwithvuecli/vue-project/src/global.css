@@ -10,7 +10,7 @@ body {
 }
 
 body.dark {
-  background-color: #121212;
+  background-color: rgb(17, 24, 39);
   color: white;
 }
 
