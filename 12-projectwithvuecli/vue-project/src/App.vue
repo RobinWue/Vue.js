@@ -4,7 +4,7 @@
       <AppHeader :isDarkMode="isDarkMode" />
       <button class="dark-mode-toggle" @click="toggleDarkMode">
         <span v-if="isDarkMode">🌞</span>
-        <span v-else>🌙</span>
+        <span v-else>🌙Dark</span>
       </button>
     </div>
     <BookList />
